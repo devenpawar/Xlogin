@@ -9,12 +9,16 @@ function App() {
   const [passwordFocus, setPasswordFocus] = useState(false);
   const [welcomeMessage, setWelcomeMessage] = useState(""); // New state for welcome message
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [error, setError] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (userName.trim() !== "" && password.trim() !== "") {
-      setIsLoggedIn(!isLoggedIn);
+    if (userName.trim() === "user" && password.trim() === "password") {
+      setIsLoggedIn(true);
       setWelcomeMessage(`Welcome, ${userName}!`);
+    } else if (userName.trim() !== "user" && password.trim() !== "password") {
+      setIsLoggedIn(false);
+      setError("Invalid username or password");
     } else {
       setWelcomeMessage(""); // Clear message if inputs are invalid
     }
@@ -23,6 +27,7 @@ function App() {
   return (
     <div className="App">
       <h1>Login Page</h1>
+      {error && <p>{error}</p>}
       {!isLoggedIn ? (
         <form onSubmit={handleSubmit}>
           <div>
