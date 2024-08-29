@@ -31,7 +31,7 @@ function App() {
       {!isLoggedIn ? (
         <form onSubmit={handleSubmit}>
           <div>
-            <span>Username: </span>
+            <label>Username: </label>
             <Tooltip
               title={userName.trim() === "" ? "Fill out this field" : ""}
               placement="right"
@@ -50,7 +50,7 @@ function App() {
             </Tooltip>
           </div>
           <div>
-            <span>Password: </span>
+            <label>Password: </label>
             <Tooltip
               title={password.trim() === "" ? "Fill out this field" : ""}
               placement="right"
